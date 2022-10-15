@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -7,24 +8,29 @@ public class Main {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		String line = sc.nextLine();
-		ArrayList<Character> list = new ArrayList<>();
-		list.add('B');
-		list.add('F');
-		list.add('T');
-		list.add('L');
-		list.add('C');
+		HashMap<Character, Boolean> dic = new HashMap<>();
+		
+		dic.put('B', false);
+		dic.put('F', false);
+		dic.put('T', false);
+		dic.put('L', false);
+		dic.put('C', false);
 		
 		for (int i=0;i<line.length();i++) {
-			Character c = line.charAt(i);
-			if (list.contains(c))
-				list.remove(c);
+			char c = line.charAt(i);
+			dic.put(c, true);
 		}
-		if (list.size()==0) {
+		
+		boolean empty = true;
+		for (Character key:dic.keySet()) {
+			if (!dic.get(key)) {
+				System.out.print(key);
+				empty = false;
+			}
+		}
+		
+		if (empty) {
 			System.out.print("NO MISSING PARTS");
-			return;
-		}
-		for (char c:list) {
-			System.out.print(c);
 		}
 	}
 
