@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -5,21 +6,25 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-		char[] list = {'B','F','T','L','C'};
-		String line  = sc.nextLine();
+		String line = sc.nextLine();
+		ArrayList<Character> list = new ArrayList<>();
+		list.add('B');
+		list.add('F');
+		list.add('T');
+		list.add('L');
+		list.add('C');
+		
 		for (int i=0;i<line.length();i++) {
-			char c = line.charAt(i);
-			for (int j=0;j<list.length;j++) {
-				char ch = list[j];
-				if (c==ch) {
-					list[j] = '*';
-				}
-			}
+			Character c = line.charAt(i);
+			if (list.contains(c))
+				list.remove(c);
 		}
-		for (int i=0;i<list.length;i++) {
-			if (list[i]!='*') {
-				System.out.print(list[i]);
-			}
+		if (list.size()==0) {
+			System.out.print("NO MISSING PARTS");
+			return;
+		}
+		for (char c:list) {
+			System.out.print(c);
 		}
 	}
 
