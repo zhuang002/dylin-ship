@@ -16,10 +16,16 @@ public class Main {
 				}
 			}
 		}
+		boolean notempty=false;
 		for (int i=0;i<list.length;i++) {
 			if (list[i]!='*') {
 				System.out.print(list[i]);
+				notempty=true;
 			}
+		}
+		
+		if (!notempty) {
+			System.out.println("NO MISSING PARTS");
 		}
 	}
 
